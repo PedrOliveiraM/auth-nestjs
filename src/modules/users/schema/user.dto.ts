@@ -3,3 +3,8 @@ export type UserCreateDto = {
   password: string
   username: string
 }
+
+export type UserUpdateAddRoleDto = {
+  _id: string
+  roles: string[]
+}

@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose'
 import { User, UserSchema } from '../users/schema/user.schema'
 import { AuthController } from './auth.controller'
 import { AuthService } from './auth.service'
+import { env } from 'src/env'
 
 @Module({
   imports: [
@@ -15,8 +16,8 @@ import { AuthService } from './auth.service'
     ]),
     JwtModule.register({
       global: true,
-      secret: 'NEST_AUTH',
-      signOptions: { expiresIn: '1000s' },
+      secret: env.JWT_SECRET,
+      signOptions: { expiresIn: env.JWT_EXPIRES_IN },
     }),
   ],
   controllers: [AuthController],

@@ -4,13 +4,10 @@ import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { AuthModule } from './modules/auth/auth.module'
 import { UsersModule } from './modules/users/users.module'
+import { env } from './env'
 
 @Module({
-  imports: [
-    MongooseModule.forRoot('mongodb://localhost/auth_nestjs'),
-    UsersModule,
-    AuthModule,
-  ],
+  imports: [MongooseModule.forRoot(env.MONGODB_URI), UsersModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
