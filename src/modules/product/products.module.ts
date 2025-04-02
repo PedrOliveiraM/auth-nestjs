@@ -11,13 +11,6 @@ import { ListProductUseCase } from './use-cases/list-product.usecase'
     MongooseModule.forFeature([{ name: Product.name, schema: ProductSchema }]),
   ],
   controllers: [ProductController],
-  providers: [
-    CreateProductUseCase,
-    ListProductUseCase,
-    {
-      provide: 'APP_GUARD',
-      useClass: RolesGuard,
-    },
-  ],
+  providers: [CreateProductUseCase, ListProductUseCase],
 })
 export class ProductModule {}
